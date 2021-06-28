@@ -247,7 +247,7 @@ $lien_bg_enfant = substr($background_enfant['contenu'],3);
       <div class="row wow fadeInUp">
         <div class="col-sm-12 col-md-7 col-lg-7 col-padright-none">
           <div class="subtitle">
-            <h2 class="titile col-xs-offset-1" id="enfant">ENFANT et adolescant</h2>
+            <h2 class="titile col-xs-offset-1" id="enfant">Enfants et Ados (-18)</h2>
           </div>
           <img src="<?php echo $lien_bg_enfant; ?>" class="img-responsive" alt="coiffure enfant"> </div>
         <div class="col-sm-12 col-md-5 col-lg-5 col-padleft-none">

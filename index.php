@@ -211,12 +211,12 @@ if(isset($_POST["message"]) && isset($_POST["nom_prenom"]) && isset($_POST["mail
       <div class="row">
         <div class="col-md-7 col-lg-8">
           <div class="responsive-object">
-            <iframe src="https://www.youtube.com/embed/jvnf2SO1l8U?rel=0&amp;controls=0&amp;showinfo=0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/7ZgTqlGGSNc?rel=0&amp;controls=0&amp;showinfo=0" allowfullscreen></iframe>
           </div>
         </div>
         <div class="col-md-5 col-lg-4 pull-right">
           <h2><?php echo $presentation_titre['contenu']; ?></h2>
-          <p><?php echo $presentation_description['contenu']; ?></p>
+          <p style="text-align:justify;"><?php echo $presentation_description['contenu']; ?></p>
         </div>
       </div>
     </div>

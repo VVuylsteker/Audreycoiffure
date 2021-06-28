@@ -2,6 +2,14 @@
 session_start();
 require('db_connect.php');
 
+function change(){
+    $myfile = fopen("../index.html", "w") or die("Unable to open file!");
+    $txt = "John Doe\n";
+    fwrite($myfile, $txt);
+    fclose($myfile);
+    return 0;
+}
+change();
 if(!empty($_SESSION['identifiant'])){
 
     if(isset($_POST['salon'])) {

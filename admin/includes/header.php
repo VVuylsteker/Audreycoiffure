@@ -22,22 +22,7 @@ $req2 = get_bdd()->query('SELECT * FROM salaries WHERE actif="1"');
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Tableau de bord
                                 </a>
-                            <div class="sb-sidenav-menu-heading">Personnalisation</div>
-    
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="far fa-file-alt"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="personnalisation1.php">Le salon & l'équipe</a>
-                                    <a class="nav-link" href="personnalisation2.php">Prestations</a>
-                                    <a class="nav-link" href="personnalisation3.php">Rendez-vous</a>
-                                    <a class="nav-link" href="personnalisation4.php">Portfolio</a>
 
-                                </nav>
-                            </div>
                             <div class="sb-sidenav-menu-heading">Rendez-vous</div>
                             <a class="nav-link" href="demande_rdv.php">
                                 <div class="sb-nav-link-icon"><i class="far fa-calendar-plus"></i></div>
@@ -78,7 +63,34 @@ $req2 = get_bdd()->query('SELECT * FROM salaries WHERE actif="1"');
                                     <div class="sb-nav-link-icon"><i class="fas fa-arrow-alt-circle-left"></i></div>
                                     Retour sur le site
                                 </a>
-                            
+                                <div class="sb-sidenav-menu-heading">Personnalisation</div>
+    
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="far fa-file-alt"></i></div>
+                                Pages
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link" href="personnalisation1.php">Le salon & l'équipe</a>
+                                    <a class="nav-link" href="personnalisation2.php">Prestations</a>
+                                    <a class="nav-link" href="personnalisation3.php">Rendez-vous</a>
+                                    <a class="nav-link" href="personnalisation4.php">Portfolio</a>
+
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#parametres" aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="far fa-file-alt"></i></div>
+                            Paramètres
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="parametres" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="personnalisation1.php">Conditions d'utilisation</a>
+                                <a class="nav-link" href="personnalisation2.php">Mentions Légales</a>
+                                <a class="nav-link" href="personnalisation3.php">Protection des données</a>
+                            </nav>
+                        </div>
                         </div>
                     </div>
                     <a class="nav-link" href="deconnexion.php" style="color:grey">Se déconnecter </a><div class="sb-sidenav-footer">
