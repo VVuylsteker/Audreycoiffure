@@ -608,10 +608,10 @@ if(isset($_POST['send_mail'])){
                                 
                                   </div>
                                 </div>
-                                <div class="col-sm-12 col-md-4 col-lg-5 appfrmright" style="display: hidden;">
+                                <div class="col-sm-12 col-md-4 col-lg-5 appfrmright">
                                       <div class="form-group">
                                         <label class="control-label">Choisir le rendez-vous</label>
-                                        <select class="form-control" size="6">
+                                        <select class="form-control" size="5">
                                         <option value="1">15:30 le 05/07/2021 avec Audrey</option>
                                           <option value="1">9:00 le 06/07/2021 avec Estelle</option>
                                           <option value="1">11:05 le 07/07/2021 avec Caroline</option>

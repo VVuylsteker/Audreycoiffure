@@ -155,7 +155,7 @@ add_visit();
         <div class="responsive">
           <div> 
             <div class="third-effect">
-                <img src="https://www.placehold.it/384x444" class="img-responsive" alt="Our Team">
+                <img src="./images/384x444.png" class="img-responsive" alt="Our Team">
             </div>
             <div class="team">
               <h3>Sara Anderson</h3>
@@ -165,7 +165,7 @@ add_visit();
 
           <div> 
              <div class="third-effect">
-                <img src="https://www.placehold.it/384x444" class="img-responsive" alt="Our Team">
+                <img src="./images/384x444.png" class="img-responsive" alt="Our Team">
             </div> 
             <div class="team">
               <h3>Medona Johnson</h3>
@@ -175,7 +175,7 @@ add_visit();
 
           <div> 
             <div class="third-effect">
-                <img src="https://www.placehold.it/384x444" class="img-responsive" alt="Our Team">
+                <img src="./images/384x444.png" class="img-responsive" alt="Our Team">
             </div> 
             <div class="team">
               <h3>Andria Joseph</h3>
@@ -195,7 +195,7 @@ add_visit();
   <div class="row">
     <div class="col-md-7 col-lg-8">
       <div class="responsive-object">
-        <iframe src="https://www.youtube.com/watch?v=zSl1xrCbCxc?rel=0&controls=0&showinfo=0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/7ZgTqlGGSNc?rel=0&controls=0&showinfo=0" allowfullscreen></iframe>
       </div>
     </div>
     <div class="col-md-5 col-lg-4 pull-right">
