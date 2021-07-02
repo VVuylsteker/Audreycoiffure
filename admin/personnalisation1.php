@@ -353,7 +353,9 @@ if(!empty($_SESSION['identifiant'])){
         $description = verifApostrophe($_POST['description']);
         $req2 = get_bdd()->prepare("UPDATE personnalisation SET contenu = '$description' WHERE id = '2'");
         $req2->execute();
+
         changeIndex();
+
         $msg ="Les modifications du salon ont été apportées avec succès";
     }
     if(isset($_POST['equipe'])) {
@@ -366,6 +368,8 @@ if(!empty($_SESSION['identifiant'])){
         $req2 = get_bdd()->prepare("UPDATE personnalisation SET contenu = '$description' WHERE id = '10'");
         $req2->execute();
 
+        changeIndex();
+
         $msg ="Les modifications de l'équipe ont été apportées avec succès";
     }
     if(isset($_POST['presentation'])) {
@@ -377,8 +381,11 @@ if(!empty($_SESSION['identifiant'])){
         $req2 = get_bdd()->prepare("UPDATE personnalisation SET contenu = '$description' WHERE id = '13'");
         $req2->execute();
 
+        changeIndex();
+
         $msg ="Les modifications de présentation ont été apportées avec succès";
     }
+    
     $result_background = get_bdd()->query("SELECT contenu FROM personnalisation WHERE description='image_background'")->fetch();
     
     $titre1 = get_bdd()->query("SELECT id, contenu FROM personnalisation WHERE description='titre_index'")->fetch();

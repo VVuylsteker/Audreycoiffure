@@ -123,7 +123,7 @@ add_visit();
                 <h1>Audrey Coiffure</h1>
             </div>
             <div class="white-bg">
-            <p style="text-align: justify;">AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure AudreyCoiffure </p>
+            <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pulvinar luctus est eget congue. Nam auctor nisi est, nec tempus lacus viverra nec. Nullam cursus, neque non congue aliquam, mauris massa consequat sem, ut laoreet nisi erat et lectus.Nam auctor nisi est, nec tempus lacus viverra nec. Nullam cursus, neque non congue aliquam, mauris massa consequat sem, ut laoreet nisi erat et lectus.</p>
             </div> 
             </div>
             </div>
