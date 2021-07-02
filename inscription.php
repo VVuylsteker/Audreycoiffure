@@ -71,6 +71,14 @@
                                         <input type="text" class="form-control" required id="inputPostal" name="inputPostal" placeholder="" minlength="0" maxlength="10">
                                         </div>
                                     </div>
+                                    <div class="form-row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            J’ai lu et j’accepte les conditions
+                                            </label>
+                                        </div>
+                                    </div>
                                            
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small dark" href="connexion.php">Déjà inscrit ?</a>

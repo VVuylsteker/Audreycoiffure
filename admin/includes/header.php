@@ -1,9 +1,6 @@
 <?php
-
 require_once('db_connect.php');
-
-$req2 = get_bdd()->query('SELECT * FROM salaries WHERE actif="1"');
-
+$req2 = get_bdd()->query("SELECT * FROM salaries WHERE actif='1' AND jour_de_travail > '' ");
 ?>
         <div class="sb-nav-fixed">
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
