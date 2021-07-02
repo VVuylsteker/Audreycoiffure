@@ -61,6 +61,7 @@ if(isset($_SESSION['rang'])){
                                         if($_SESSION['rang']==1){
                                     ?>
                                         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ajouter">Ajouter un salarié</button>
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ajouter">Ajouter un congé</button>
                                     <?php
                                         }
                                     ?>
@@ -189,12 +190,13 @@ if(isset($_SESSION['rang'])){
                                                 <td>
                                                     <ul>
                                                         <?php
+                                                            if($donnees['jour_de_travail'] != ''){
                                                             $jours = preg_split("[,]", $donnees['jour_de_travail']);
                                                             foreach ($jours as $jour){
                                                         ?>
                                                             <li><?php echo ucwords($jour)?></li>
                                                         <?php
-                                                        }
+                                                        }}
                                                         ?>
                                                     </ul>
                                                 </td>
@@ -210,9 +212,12 @@ if(isset($_SESSION['rang'])){
 
                                                         <div class="row">
                                                         <!--La classe bg-info ajoute un fond bleu à l'élément-->
+                                                        <?php if($_SESSION['rang'] == '1' || $_SESSION['identifiant'] == $donnees['identifiant']){ ?>
                                                             <div style="margin-left:10px;margin-right:10px;">
                                                                 <a class="btn btn-secondary" href="salarie_edit?id=<?php echo $donnees['id']; ?>"><i class="fas fa-user-edit" style=></i></a>
                                                             </div>
+                                                        <?php } ?>
+
                                                         </div>
                                                 </td>
                                             </tr>

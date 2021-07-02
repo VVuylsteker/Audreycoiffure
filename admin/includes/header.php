@@ -14,11 +14,13 @@ $req2 = get_bdd()->query("SELECT * FROM salaries WHERE actif='1' AND jour_de_tra
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
+                            
                             <div class="sb-sidenav-menu-heading">Accueil</div>
                                 <a class="nav-link" href="index.php">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Tableau de bord
                                 </a>
+                                
 
                             <div class="sb-sidenav-menu-heading">Rendez-vous</div>
                             <a class="nav-link" href="demande_rdv.php">
@@ -56,10 +58,6 @@ $req2 = get_bdd()->query("SELECT * FROM salaries WHERE actif='1' AND jour_de_tra
                                 <a class="nav-link" href="salaries.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-friends"></i></div> Salariés
                             </a>
-                            <a class="nav-link" href="../index.php">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-arrow-alt-circle-left"></i></div>
-                                    Retour sur le site
-                                </a>
                                 <div class="sb-sidenav-menu-heading">Personnalisation</div>
     
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -87,9 +85,14 @@ $req2 = get_bdd()->query("SELECT * FROM salaries WHERE actif='1' AND jour_de_tra
                                 <a class="nav-link" href="personnalisation2.php">Mentions Légales</a>
                                 <a class="nav-link" href="personnalisation3.php">Protection des données</a>
                             </nav>
+                        </div>                        <a class="nav-link" href="../index.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-arrow-alt-circle-left"></i></div>
+                                    Retour sur le site
+                                </a>
                         </div>
-                        </div>
+
                     </div>
+                    
                     <a class="nav-link" href="deconnexion.php" style="color:grey">Se déconnecter </a><div class="sb-sidenav-footer">
                         
                         <div class="small">Connecté en tant que :</div>
