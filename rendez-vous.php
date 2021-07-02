@@ -459,9 +459,7 @@ if(isset($_POST['send_mail'])){
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/master.css">
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+
 
 </head>
 <body>
@@ -593,53 +591,47 @@ if(isset($_POST['send_mail'])){
                                   </div>
 
                                   <div class="form-group">
-                                                        <div class="time dateinput">
-                                      <label>Coiffeuse</label>
-                                      
-                                      <select name="coiffeuse" id="coiffeuse" required>
-
-                                        <?php while ($donnees = $req->fetch()){ ?>
-                                        <option value="<?php echo $donnees['id']; ?>"><?php echo $donnees['prenom']; ?></option>
-                                        <?php } ?>
-                                      </select>
-                                    </div>
-                                        <div class="time">
-                                      <label>Prestations</label>
-                                      <select name="prestation" id="prestation" required>
-
-                                    
-
-                                        <?php 
-                                        
-                                        while ($donnees1 = $req1->fetch()){ ?>
-                                          <option value="<?php echo $donnees1['nom'].",".$donnees1['temps'];?>"><?php echo $donnees1['nom'];?></option>
-                                          <?php } ?>
-                                                      
-
-                                      </select>
-                                    </div>
+                                    <label>Prestations</label>
+                                    <select name="" id="" class="form-control">
+                                      <option value="">aa</option>
+                                      <option value="">aa</option>
+                                      <option value="">aa</option>
+                                    </select>
                                   </div>
                                   <div class="form-group mt-right0">
-                                                          <div class="input-append dateinput">
-                                        <label class="control-label">Date</label>
-                                        <div class=""><input type="date" class="form-control required" name="date" min="<?php echo $today ?>" max="<?php echo $day_max ?>" required/></div>
-                                      </div>
-
-                                    <div class="time">
-                                      <label>Heure</label>
-                                      <input type="time" class="form-control required" name="heure" id="heure" step="300" min="09:00" max="18:00" required/>
-                                      </div>
+                                    <label>Commentaire</label>
+                                    <input type="text" class="form-control" name="prenom" id="prenom" required/>
                                   </div>
+                                  <div style="float: right;">
+                                          <button type="submit" class="btn btn-default" name="submit" value="Submit" >SUIVANT</button>
+                                      </div>
                                 
                                   </div>
                                 </div>
-                                <div class="col-sm-12 col-md-4 col-lg-5 appfrmright">
-                                      <div class="form-group textarea">
-                                        <label class="control-label">Commentaire</label>
-                                        <textarea class="form-control" name="commentaire" rows="5" id="commentaire"></textarea>
+                                <div class="col-sm-12 col-md-4 col-lg-5 appfrmright" style="display: hidden;">
+                                      <div class="form-group">
+                                        <label class="control-label">Choisir le rendez-vous</label>
+                                        <select class="form-control" size="6">
+                                        <option value="1">15:30 le 05/07/2021 avec Audrey</option>
+                                          <option value="1">9:00 le 06/07/2021 avec Estelle</option>
+                                          <option value="1">11:05 le 07/07/2021 avec Caroline</option>
+                                          <option value="1">14:15 le 08/07/2021 avec Audrey</option>
+                                          <option value="1">16:30 le 09/07/2021 avec Caroline</option>
+                                          <option value="1">15:30 le 05/07/2021 avec Audrey</option>
+                                          <option value="1">9:00 le 06/07/2021 avec Estelle</option>
+                                          <option value="1">11:05 le 07/07/2021 avec Caroline</option>
+                                          <option value="1">14:15 le 08/07/2021 avec Audrey</option>
+                                          <option value="1">16:30 le 09/07/2021 avec Caroline</option>
+                                          <option value="1">15:30 le 05/07/2021 avec Audrey</option>
+                                          <option value="1">9:00 le 06/07/2021 avec Estelle</option>
+                                          <option value="1">11:05 le 07/07/2021 avec Caroline</option>
+                                          <option value="1">14:15 le 08/07/2021 avec Audrey</option>
+                                          <option value="1">16:30 le 09/07/2021 avec Caroline</option>
+
+                                        </select>
                                       </div>
-                                      <div class="submitbtn">
-                                          <button type="submit" class="btn btn-default" name="submit" value="Submit" >ENVOYER</button>
+                                      <div style="float: right;">
+                                          <button type="submit" class="btn btn-default" name="submit" value="Submit" >VALIDER LE RENDEZ-VOUS</button>
                                       </div>	
                                 </div> 
                               </form>

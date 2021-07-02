@@ -98,6 +98,7 @@ add_visit();
                             <li>
                             <a href="">Mon compte</a>
                             <ul>
+                            <li><a href="mes-rendez-vous.php">Paramètres</a></li>
                             <li><a href="mes-rendez-vous.php">Mes Rendez-vous</a></li>
                             <li><a href="deconnexion.php">Se déconnecter</a></li>
                             </ul>
@@ -294,6 +295,7 @@ add_visit();
       <div class="coypright" style="text-align: center;">
     
         <a>Mentions légales</a><span> - </span>
+        <a>Protection des données</a><br>
         <a>Conditions générales d\'utilisation</a>
         <p>Audrey Coiffure - EIRL VANDENBROUCKE</p>
       </div>

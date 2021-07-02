@@ -3,6 +3,7 @@ session_start();
 require_once('fonction_client.php');
 require_once('admin/db_connect.php');
 
+// Pagination
 $rdvParPage = 5;
 $id_session = $_SESSION['id_client'];
 $rdvTotalesReq = get_bdd()->query("SELECT id FROM rdv WHERE id_client='$id_session'");
@@ -15,6 +16,7 @@ if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GE
    $pageCourante = 1;
 }
 $depart = ($pageCourante-1)*$rdvParPage;
+//Fin de la pagination
 ?>
 
 <!doctype html>
@@ -26,9 +28,6 @@ $depart = ($pageCourante-1)*$rdvParPage;
 <title>Mes rendez-vous</title>
 <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="css/master.css">
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
 
 </head>
 <body>
@@ -44,6 +43,7 @@ $depart = ($pageCourante-1)*$rdvParPage;
     <?php
       if(isset($_SESSION['id_client'])){
     ?>
+    <li><a href="mes-rendez-vous.php">Pramètres</a></li>
     <li><a href="mes-rendez-vous.php">Mes Rendez-vous</a></li>
     <li><a href="deconnexion.php">Se déconnecter</a></li>
     <?php
@@ -86,16 +86,11 @@ $depart = ($pageCourante-1)*$rdvParPage;
                   <li>
                   <a href="">Mon compte</a>
                 <ul>
+                  <li><a href="mes-rendez-vous.php">Paramètres</a></li>
                   <li><a href="mes-rendez-vous.php">Mes Rendez-vous</a></li>
                   <li><a href="deconnexion.php">Se déconnecter</a></li>
                 </ul>
                 </li>
-                  <?php
-                }
-                else{
-                  ?>
-                  <li><a href="connexion.php">Connexion</a></li>
-                  <li><a href="inscription.php">Inscription</a></li>
                   <?php
                 }
               ?>
@@ -160,20 +155,157 @@ $depart = ($pageCourante-1)*$rdvParPage;
         <td><?php switch ($donnees['valide']) {
           case "0":
             echo "En attente";
+            ?>
+<style>
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 200px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: white;
+  margin: auto;
+  padding:0;
+
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 10px;
+  background-color: #5cb85c;
+  color: black;
+  text-align: center;
+}
+
+.modal-body 
+{padding: 20px;
+  text-align: center;
+}
+
+.modal-footer {
+  padding: 10px 10px;
+  background-color: #5cb85c;
+  color: black;
+}
+</style>
+<a id="myBtn" style="float: right;">Annuler</a>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>ANNULATION</h2>
+    </div>
+    <div class="modal-body">
+      <h3 style="color: black;">Voulez- vous vraiment annulé ce rendez-vous ?</h3>
+      <table>
+        <tr>
+          <td>Pour :</td>
+          <td><?php echo $result[0];?></td>
+        </tr>
+        <tr>
+          <td>Prestation :</td>
+          <td><?php echo ucwords($result[1]);?></td>
+        </tr>
+        <tr>
+          <td>Le :</td>
+        <td><?php echo $date." à ".$heure ?></td>
+        </tr>
+        <tr>
+          <td>Commentaire :</td>
+        <td><?php echo $result[2];?></td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button>Non</button>
+      <button style="float: right;">Oui</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+            <?php
             break;
           case "1":
             echo "Valider";
+            ?>
+            <p>Annuler</p>
+            <?php
             break;
           case "2":
             echo "Refuser";
             break;
-          case "2":
+          case "3":
             echo "Annuler";
             break;
 
           default:
           echo "En attente";
-} ?> - Annuler</td>
+} ?></td>
       </tr>
         <?php } ?>
     </tbody>
