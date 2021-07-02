@@ -16,6 +16,7 @@ function changeIndex(){
     $result_description_equipe = get_bdd()->query("SELECT id, contenu FROM personnalisation WHERE description='description_equipe'")->fetch();
     $presentation_titre = get_bdd()->query("SELECT id, contenu FROM personnalisation WHERE description='titre_presentation'")->fetch();
     $presentation_description = get_bdd()->query("SELECT id, contenu FROM personnalisation WHERE description='description_presentation'")->fetch();
+    $presentation_lien = get_bdd()->query("SELECT id, contenu FROM personnalisation WHERE description='lien_presentation'")->fetch();
 
 
     $myfile = fopen("../index.php", "w") or die("Impossible d'ouvrir le fichier !");
@@ -216,7 +217,7 @@ add_visit();
   <div class="row">
     <div class="col-md-7 col-lg-8">
       <div class="responsive-object">
-        <iframe src="https://www.youtube.com/embed/7ZgTqlGGSNc?rel=0&amp;controls=0&amp;showinfo=0" allowfullscreen></iframe>
+        <iframe src="'.$presentation_lien['contenu'].'?rel=0&controls=0&showinfo=0" allowfullscreen></iframe>
       </div>
     </div>
     <div class="col-md-5 col-lg-4 pull-right">
@@ -348,7 +349,7 @@ if(!empty($_SESSION['identifiant'])){
 
     if(isset($_POST['salon'])) {
     
-        $titre = verifApostrophe($_POST['titre']);
+        $titre = verifApostrophe($_POST['titre1']);
         $req1 = get_bdd()->prepare("UPDATE personnalisation SET contenu = '$titre' WHERE id = '1'");
         $req1->execute();
 
@@ -362,7 +363,7 @@ if(!empty($_SESSION['identifiant'])){
     }
     if(isset($_POST['equipe'])) {
     
-        $titre = verifApostrophe($_POST['titre_equipe']);
+        $titre = verifApostrophe($_POST['titre2']);
         $req1 = get_bdd()->prepare("UPDATE personnalisation SET contenu = '$titre' WHERE id = '9'");
         $req1->execute();
 
@@ -375,13 +376,17 @@ if(!empty($_SESSION['identifiant'])){
         $msg ="Les modifications de l'équipe ont été apportées avec succès";
     }
     if(isset($_POST['presentation'])) {
-        $titre = verifApostrophe($_POST['description']);
+        $titre = verifApostrophe($_POST['titre3']);
         $req1 = get_bdd()->prepare("UPDATE personnalisation SET contenu = '$titre' WHERE id = '12'");
         $req1->execute();
 
         $description = verifApostrophe($_POST['description']);
         $req2 = get_bdd()->prepare("UPDATE personnalisation SET contenu = '$description' WHERE id = '13'");
         $req2->execute();
+
+        $lien = $_POST['lien'];
+        $req3 = get_bdd()->prepare("UPDATE personnalisation SET contenu = '$lien' WHERE id = '14'");
+        $req3->execute();
 
         changeIndex();
 
@@ -398,6 +403,8 @@ if(!empty($_SESSION['identifiant'])){
 
     $titre3 = get_bdd()->query("SELECT id, contenu FROM personnalisation WHERE description='titre_presentation'")->fetch();
     $description3 = get_bdd()->query("SELECT id, contenu FROM personnalisation WHERE description='description_presentation'")->fetch();
+    
+    $lien = get_bdd()->query("SELECT id, contenu FROM personnalisation WHERE description='lien_presentation'")->fetch();
 
     if(isset($_POST['couverture']) && !empty($_POST['couverture'])){
 
@@ -487,8 +494,8 @@ if(!empty($_SESSION['identifiant'])){
                             <div class="card-body">
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label for="titre">Titre</label>
-                                    <input type="text" class="form-control" id="titre" name="titre" maxlength="50" value="<?php echo $titre1['contenu']; ?>">
+                                    <label for="titre1">Titre</label>
+                                    <input type="text" class="form-control" id="titre1" name="titre1" maxlength="50" value="<?php echo $titre1['contenu']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
@@ -512,8 +519,8 @@ if(!empty($_SESSION['identifiant'])){
                             <div class="card-body">
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label for="titre">Titre</label>
-                                    <input type="text" class="form-control" id="titre_equipe" maxlength="50" name="titre_equipe" value="<?php echo $titre2['contenu']; ?>">
+                                    <label for="titre2">Titre</label>
+                                    <input type="text" class="form-control" id="titre2" maxlength="50" name="titre2" value="<?php echo $titre2['contenu']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
@@ -533,12 +540,16 @@ if(!empty($_SESSION['identifiant'])){
                             <div class="card-body">
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label for="titre">Titre</label>
-                                    <input type="text" class="form-control" id="titre" maxlength="50" name="titre" value="<?php echo $titre3['contenu']; ?>">
+                                    <label for="titre3">Titre</label>
+                                    <input type="text" class="form-control" id="titre3" maxlength="50" name="titre3" value="<?php echo $titre3['contenu']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <textarea class="form-control" id="description" rows="5" name="description"><?php echo $description3['contenu']; ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lien">Lien de la vidéo :</label>
+                                    <input type="text" class="form-control" id="lien" name="lien" value="<?php echo $lien['contenu']; ?>">
                                 </div>
                                 <button type="submit" name="presentation" class="btn btn-primary">Changer</button>
                             </form>

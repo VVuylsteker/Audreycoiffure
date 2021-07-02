@@ -195,11 +195,11 @@ add_visit();
   <div class="row">
     <div class="col-md-7 col-lg-8">
       <div class="responsive-object">
-        <iframe src="https://www.youtube.com/embed/7ZgTqlGGSNc?rel=0&amp;controls=0&amp;showinfo=0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/watch?v=zSl1xrCbCxc?rel=0&controls=0&showinfo=0" allowfullscreen></iframe>
       </div>
     </div>
     <div class="col-md-5 col-lg-4 pull-right">
-      <h2>Présentation</h2>
+      <h2>aaa</h2>
       <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pulvinar luctus est eget congue. Nam auctor nisi est, nec tempus lacus viverra nec. Nullam cursus, neque non congue aliquam, mauris massa consequat sem, ut laoreet nisi erat et lectus. Nullam non neque eros. Pellentesque nec vulputate eros. Integer scelerisque lorem id massa accumsan, ut faucibus ante suscipit. Nunc tincidunt et ligula vitae pharetra. Fusce ut lobortis augue, eget volutpat felis.</p>
     </div>
   </div>
