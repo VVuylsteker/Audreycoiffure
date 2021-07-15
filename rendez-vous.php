@@ -446,7 +446,13 @@ if(isset($_POST['send_mail'])){
   mail($mail, "Confirmation de compte AudreyCoiffure59.fr", $message, $header);
   $msg_mail ="Un email de confirmation vient de vous être envoyé";
 }
+// Génération des créneau disponible
+if(isset($_POST['suivant'])){
+  $prestation = $_POST['prestation'];
+  var_dump($prestation);
+}
 
+// Création du rendez-vous
 if(isset($_POST['submit'])){
   $nom = $_POST['nom'];
   $prenom = $_POST['prenom'];
@@ -576,11 +582,11 @@ if(isset($_POST['submit'])){
                               <?php
                         if(isset($_SESSION['id_client'])){
                           if($req3['valide'] == 1){
-                          if($req2['contenu'] == 1){
+                            if($req2['contenu'] == 1){
+                              //Vérification de l'étaop
+                              
 
                       ?>
-                                <div id="SuccessMessage"></div>
-                              <div id="ErrorMessage"></div>
                               <form  action="" method="post">
                                 <div class="col-sm-12 col-md-8 col-lg-7 appfrmleft">
                                   <div class="form-group">
@@ -609,38 +615,35 @@ if(isset($_POST['submit'])){
                                       </div>
                                   </div>
                                 </div>
+                              </form>
 
-                                <div class="col-sm-12 col-md-4 col-lg-5 appfrmright" id="choisir" style="visibility: hidden;">
-                                      <div class="form-group">
-                                        <label class="control-label">Choisir le rendez-vous</label>
-                                        <select class="form-control" size="5" name="date">
-                                        <option value="1">15:30 le 05/07/2021 avec Audrey</option>
-                                          <option value="1">9:00 le 06/07/2021 avec Estelle</option>
-                                          <option value="1">11:05 le 07/07/2021 avec Caroline</option>
-                                          <option value="1">14:15 le 08/07/2021 avec Audrey</option>
-                                          <option value="1">16:30 le 09/07/2021 avec Caroline</option>
+                              <form action="" method="post">
+                                <div class="col-sm-12 col-md-4 col-lg-5 appfrmright">
+                                        <div class="form-group">
+                                          <label class="control-label">Choisir le rendez-vous</label>
+                                          <select class="form-control" size="5" name="date">
                                           <option value="1">15:30 le 05/07/2021 avec Audrey</option>
-                                          <option value="1">9:00 le 06/07/2021 avec Estelle</option>
-                                          <option value="1">11:05 le 07/07/2021 avec Caroline</option>
-                                          <option value="1">14:15 le 08/07/2021 avec Audrey</option>
-                                          <option value="1">16:30 le 09/07/2021 avec Caroline</option>
-                                          <option value="1">15:30 le 05/07/2021 avec Audrey</option>
-                                          <option value="1">9:00 le 06/07/2021 avec Estelle</option>
-                                          <option value="1">11:05 le 07/07/2021 avec Caroline</option>
-                                          <option value="1">14:15 le 08/07/2021 avec Audrey</option>
-                                          <option value="1">16:30 le 09/07/2021 avec Caroline</option>
+                                            <option value="1">9:00 le 06/07/2021 avec Estelle</option>
+                                            <option value="1">11:05 le 07/07/2021 avec Caroline</option>
+                                            <option value="1">14:15 le 08/07/2021 avec Audrey</option>
+                                            <option value="1">16:30 le 09/07/2021 avec Caroline</option>
+                                            <option value="1">15:30 le 05/07/2021 avec Audrey</option>
+                                            <option value="1">9:00 le 06/07/2021 avec Estelle</option>
+                                            <option value="1">11:05 le 07/07/2021 avec Caroline</option>
+                                            <option value="1">14:15 le 08/07/2021 avec Audrey</option>
+                                            <option value="1">16:30 le 09/07/2021 avec Caroline</option>
+                                            <option value="1">15:30 le 05/07/2021 avec Audrey</option>
+                                            <option value="1">9:00 le 06/07/2021 avec Estelle</option>
+                                            <option value="1">11:05 le 07/07/2021 avec Caroline</option>
+                                            <option value="1">14:15 le 08/07/2021 avec Audrey</option>
+                                            <option value="1">16:30 le 09/07/2021 avec Caroline</option>
 
-                                        </select>
-                                      </div>
-                                      <div style="float: right;">
-                                          <button type="submit" class="btn btn-default" name="submit" value="Submit" >VALIDER LE RENDEZ-VOUS</button>
-                                      </div>	
-                                </div> 
-                                <script>
-                                      var choisir = document.getElementById("choisir");
-                                      var x = document.getElementById("suivant");
-                                      x.addEventListener("click", function(){x.style.visibility="hidden";choisir.style.visibility = "visible"; });
-                                </script>
+                                          </select>
+                                        </div>
+                                        <div style="float: right;">
+                                            <button type="submit" class="btn btn-default" name="submit" value="Submit" >VALIDER LE RENDEZ-VOUS</button>
+                                        </div>	
+                                  </div>
                               </form>
     <?php
       }
