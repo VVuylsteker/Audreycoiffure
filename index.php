@@ -77,7 +77,7 @@ add_visit();
                             <li>
                             <a href="">Mon compte</a>
                             <ul>
-                            <li><a href="mes-rendez-vous.php">Paramètres</a></li>
+                            <li><a href="parametres.php">Paramètres</a></li>
                             <li><a href="mes-rendez-vous.php">Mes Rendez-vous</a></li>
                             <li><a href="deconnexion.php">Se déconnecter</a></li>
                             </ul>

@@ -6,7 +6,6 @@ $id = $_SESSION['id_client'];
 $today = date("Y-m-j"); 
 $day_max = date('Y-m-j', strtotime($today. ' + 90 days'));
 
-$req = get_bdd()->query('SELECT id, prenom FROM salaries WHERE actif="1" ORDER BY prenom ASC');
 $req1 = get_bdd()->query('SELECT nom, temps FROM prestations');
 $req2 = get_bdd()->query('SELECT * FROM personnalisation WHERE description ="system_rdv"')->fetch();
 $req3 = get_bdd()->query("SELECT prenom, mail, cle_validation, valide FROM clients WHERE id='$id'")->fetch();
@@ -447,6 +446,15 @@ if(isset($_POST['send_mail'])){
   mail($mail, "Confirmation de compte AudreyCoiffure59.fr", $message, $header);
   $msg_mail ="Un email de confirmation vient de vous être envoyé";
 }
+
+if(isset($_POST['submit'])){
+  $nom = $_POST['nom'];
+  $prenom = $_POST['prenom'];
+  $prestation = $_POST['prestation'];
+  $commentaire = $_POST['commentaire'];
+  $date = $_POST['date'];
+  var_dump($nom.$prenom.$prestation.$commentaire.$date);
+}
 ?>
 <!doctype html>
 <html>
@@ -456,8 +464,6 @@ if(isset($_POST['send_mail'])){
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Demande de rendez-vous</title>
 <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300' rel='stylesheet' type='text/css'>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 <link rel="stylesheet" type="text/css" href="css/master.css">
 
 
@@ -530,8 +536,6 @@ if(isset($_POST['send_mail'])){
                   <?php
                 }
               ?>
-
-
             </ul>
           </div>
         </div>
@@ -569,14 +573,12 @@ if(isset($_POST['send_mail'])){
             </div>
          
             <div class="appfrm">	
-
                               <?php
                         if(isset($_SESSION['id_client'])){
                           if($req3['valide'] == 1){
                           if($req2['contenu'] == 1){
 
                       ?>
-               
                                 <div id="SuccessMessage"></div>
                               <div id="ErrorMessage"></div>
                               <form  action="" method="post">
@@ -592,26 +594,26 @@ if(isset($_POST['send_mail'])){
 
                                   <div class="form-group">
                                     <label>Prestations</label>
-                                    <select name="" id="" class="form-control">
-                                      <option value="">aa</option>
-                                      <option value="">aa</option>
-                                      <option value="">aa</option>
+                                    <select name="prestation" id="prestation" class="form-control">
+                                      <option value="aa">aa</option>
+                                      <option value="bb">bb</option>
+                                      <option value="cc">cc</option>
                                     </select>
                                   </div>
                                   <div class="form-group mt-right0">
                                     <label>Commentaire</label>
-                                    <input type="text" class="form-control" name="prenom" id="prenom" required/>
+                                    <input type="text" class="form-control" name="commentaire" id="commentaire" required/>
                                   </div>
                                   <div style="float: right;">
-                                          <button type="submit" class="btn btn-default" name="submit" value="Submit" >SUIVANT</button>
+                                          <button type="button" class="btn btn-default" id="suivant" value="suivant" >SUIVANT</button>
                                       </div>
-                                
                                   </div>
                                 </div>
-                                <div class="col-sm-12 col-md-4 col-lg-5 appfrmright">
+
+                                <div class="col-sm-12 col-md-4 col-lg-5 appfrmright" id="choisir" style="visibility: hidden;">
                                       <div class="form-group">
                                         <label class="control-label">Choisir le rendez-vous</label>
-                                        <select class="form-control" size="5">
+                                        <select class="form-control" size="5" name="date">
                                         <option value="1">15:30 le 05/07/2021 avec Audrey</option>
                                           <option value="1">9:00 le 06/07/2021 avec Estelle</option>
                                           <option value="1">11:05 le 07/07/2021 avec Caroline</option>
@@ -634,6 +636,11 @@ if(isset($_POST['send_mail'])){
                                           <button type="submit" class="btn btn-default" name="submit" value="Submit" >VALIDER LE RENDEZ-VOUS</button>
                                       </div>	
                                 </div> 
+                                <script>
+                                      var choisir = document.getElementById("choisir");
+                                      var x = document.getElementById("suivant");
+                                      x.addEventListener("click", function(){x.style.visibility="hidden";choisir.style.visibility = "visible"; });
+                                </script>
                               </form>
     <?php
       }
@@ -694,64 +701,6 @@ if(isset($_POST['send_mail'])){
       }
     ?>
     
-
-
-<?php
-
-
-if(isset($_POST['submit'])){
-  if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['coiffeuse']) && !empty($_POST['prestation']) && !empty($_POST['date']) && !empty($_POST['heure']) && !empty($_POST['commentaire'])){
-	
-  
-  $pres = explode(',', $_POST['prestation'], 2);
-	$infos = $_POST['nom']." ".$_POST['prenom']." | ".$pres[0]." | ".$_POST['commentaire'];
-	$debut = $_POST['date']." ".$_POST['heure'];
-	$fin = $_POST['date'];
-	$couleur = "";
-	$id_salaries = $_POST['coiffeuse'];
-	$id_client = $_SESSION['id_client'];
-
-	$date_fin = date('Y-m-d H:i:s',strtotime('+'.$pres[1].' seconds',strtotime($debut)));
-
-
-	$sql = "INSERT INTO rdv(id, titre, couleur, debut, fin, id_salaries, valide, id_client) values (NULL, '$infos', '$couleur', '$debut', '$date_fin', '$id_salaries', '0', $id_client)";
-	//$req = get_bdd()->prepare($sql);
-	//$req->execute();
-	
-	$query = get_bdd()->prepare( $sql );
-	if ($query == false) {
-	 print_r($connect_bdd->errorInfo());
-	 die ('Erreur prepare');
-	}
-	$sth = $query->execute();
-	if ($sth == false) {
-	 print_r($query->errorInfo());
-	 die ('Erreur execute');
-	}
-
-?>
-      <script>
-          swal({
-              title: "Votre demande de rendez-vous a bien été envoyé au salon <?=$debut?> !",
-              text: "Il est en attente de réponse par le salon. Vous recevrez un mail de confirmation",
-              icon: "success",
-              type: "success"
-          }).then(function() {
-              window.location = "mes-rendez-vous.php";
-          });
-      </script>
-<?php
-}
-else{
-  ?>
-  <script>
-      swal("Erreur de saisie détectée ", "Le rendez-vous n'a pas été créé. \n Veuillez verifier vos informations.", "error");
-  </script>
-  <?php
-}
-
-}
-?> 
                  
                  <div class="clearfix"></div>
 			</div>
