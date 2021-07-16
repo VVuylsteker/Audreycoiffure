@@ -135,7 +135,7 @@ $depart = ($pageCourante-1)*$rdvParPage;
             <th scope="col">Prestation</th>
             <th scope="col">Date et heure</th>
             <th scope="col">Commentaire</th>
-            <th scope="col">Etat</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
     <tbody>
@@ -152,160 +152,11 @@ $depart = ($pageCourante-1)*$rdvParPage;
         <td><?php echo ucwords($result[1]);?></td>
         <td><?php echo $date." à ".$heure ?></td>
         <td><?php echo $result[2];?></td>
-        <td><?php switch ($donnees['valide']) {
-          case "0":
-            echo "En attente";
-            ?>
-<style>
+        <td>
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 200px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+          <a href="annulation.php">Annuler</a>
 
-/* Modal Content */
-.modal-content {
-  position: relative;
-  background-color: white;
-  margin: auto;
-  padding:0;
-
-  width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
-}
-
-/* Add Animation */
-@-webkit-keyframes animatetop {
-  from {top:-300px; opacity:0} 
-  to {top:0; opacity:1}
-}
-
-@keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
-}
-
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.modal-header {
-  padding: 10px;
-  background-color: #5cb85c;
-  color: black;
-  text-align: center;
-}
-
-.modal-body 
-{padding: 20px;
-  text-align: center;
-}
-
-.modal-footer {
-  padding: 10px 10px;
-  background-color: #5cb85c;
-  color: black;
-}
-</style>
-<a id="myBtn" style="float: right;">Annuler</a>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2>ANNULATION</h2>
-    </div>
-    <div class="modal-body">
-      <h3 style="color: black;">Voulez- vous vraiment annulé ce rendez-vous ?</h3>
-      <table>
-        <tr>
-          <td>Pour :</td>
-          <td><?php echo $result[0];?></td>
-        </tr>
-        <tr>
-          <td>Prestation :</td>
-          <td><?php echo ucwords($result[1]);?></td>
-        </tr>
-        <tr>
-          <td>Le :</td>
-        <td><?php echo $date." à ".$heure ?></td>
-        </tr>
-        <tr>
-          <td>Commentaire :</td>
-        <td><?php echo $result[2];?></td>
-        </tr>
-      </table>
-    </div>
-    <div class="modal-footer">
-      <button>Non</button>
-      <button style="float: right;">Oui</button>
-    </div>
-  </div>
-
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-
-            <?php
-            break;
-          case "1":
-            echo "Valider";
-            ?>
-            <p>Annuler</p>
-            <?php
-            break;
-          case "2":
-            echo "Refuser";
-            break;
-          case "3":
-            echo "Annuler";
-            break;
-
-          default:
-          echo "En attente";
-} ?></td>
+        </td>
       </tr>
         <?php } ?>
     </tbody>
