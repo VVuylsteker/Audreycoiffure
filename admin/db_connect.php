@@ -10,4 +10,5 @@ function get_bdd(){
     return $bdd;
 }
 
+
 ?>
